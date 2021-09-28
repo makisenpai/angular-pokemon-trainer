@@ -1,1 +1,16 @@
-<p>pokedex-list works!</p>
+<div class="container">
+    <h2>List of pokemon</h2>
+    <div class="border border-primary">
+        <ul class="d-flex">
+            <li *ngFor="let pokemon of pokemonList" class="col">
+                <div class="row-sm-8">
+                    <span>{{pokemon.name}}</span>
+                    <img src={{pokemon.img}} />
+                </div>
+                <button class="btn btn-primary" *ngIf="pokemon.caught === false ">Catch pokemon</button>
+                <span class="text-danger" *ngIf="pokemon.caught === true ">Owned</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
