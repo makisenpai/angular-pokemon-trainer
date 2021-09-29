@@ -3,8 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  //add "{id}.png" at the end of imageUrl
+  imageUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
