@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {Pokemon} from "../../models/pokemon.model";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pokedex-item',
@@ -6,16 +8,18 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./pokedex-item.component.css']
 })
 export class PokedexItemComponent implements OnInit {
-  @Input() pokemon?: any; // CHANGE TO POKEMON TYPE
+  @Input() pokemon: Pokemon = {id: 0, name: "", url: ""}// CHANGE TO POKEMON TYPE
   @Output() catchById: EventEmitter<number> = new EventEmitter(); // send id to parent when clicked or something
-  
+  public sprite = "";
+
   constructor() { }
 
   ngOnInit(): void {
+    this.sprite = environment.imageUrl + `${this.pokemon.id}.png`;
   }
 
   onCatchPokemon = () => {
-    this.catchById.emit(this.pokemon.id)
+    if (this.pokemon) this.catchById.emit(this.pokemon.id)
   }
 
 }
