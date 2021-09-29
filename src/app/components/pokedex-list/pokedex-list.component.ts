@@ -9,18 +9,18 @@ export class PokedexListComponent implements OnInit {
 
   pokemonList: any[] = [{name: '', id: 0, caught: false, img: ''}];
   constructor() { 
+
+  }
+
+  ngOnInit(): void {
     // fetch list of pokemon from sessionStorage
     let storage = sessionStorage.getItem('testList')
     if (storage !== null) this.pokemonList = JSON.parse(storage);
   }
 
-  ngOnInit(): void {
-
-    
+  
+  handleCatchPokemon = (pokemonId: number) => {
+    let indexOfPokemon = this.pokemonList.findIndex(x => x.id === pokemonId);
+    this.pokemonList[indexOfPokemon].caught = true;
   }
-
-
-
-
-
 }

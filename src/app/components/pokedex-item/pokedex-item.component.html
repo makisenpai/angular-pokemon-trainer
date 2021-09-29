@@ -1,0 +1,12 @@
+<li class="col text-center pokebox">
+    <div class="row-sm-3">
+        <span>{{pokemon.name}}</span>
+    </div>
+    <div class="row-sm-5">
+        <img src={{pokemon.img}} />
+    </div>
+    <div class="row-sm-4 mb-2 d-flex justify-content-center align-items-center">
+        <button (click)="onCatchPokemon()" class="btn btn-primary btn-block" *ngIf="pokemon.caught === false">Catch pokemon</button>
+        <button class="btn btn-danger btn-block" *ngIf="pokemon.caught === true" disabled>Owned</button>
+    </div>
+</li>
