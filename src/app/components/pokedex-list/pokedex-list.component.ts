@@ -7,18 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokedexListComponent implements OnInit {
 
-  constructor() { }
+  pokemonList: any[] = [{name: '', id: 0, caught: false, img: ''}];
+  constructor() { 
+    // fetch list of pokemon from sessionStorage
+    let storage = sessionStorage.getItem('testList')
+    if (storage !== null) this.pokemonList = JSON.parse(storage);
+  }
 
   ngOnInit(): void {
 
-    // fetch list of pokemon from sessionStorage
+    
   }
 
-  pokemonList = [
-    {name: 'Bulbasaur', id: 1, caught: false, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'},
-    {name: 'Ivysaur', id: 2, caught: true, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'},
-    {name: 'Venisaur', id: 3, caught: false, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png'}
-  ]
+
 
 
 
