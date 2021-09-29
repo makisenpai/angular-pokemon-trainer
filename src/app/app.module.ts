@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
-
 import { AppComponent } from './app.component';
-import { LoginPageComponent } from './components/login-page/login-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import {LoginPage} from "./pages/login/login.page";
+import {AppRoutingModules} from "./services/app-routing.modules";
+import {PokedexPage} from "./pages/pokedex/pokedex.page";
+import {TrainerPage} from "./pages/trainer/trainer.page";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginPageComponent,
-    NavbarComponent
+      AppComponent,
+      NavbarComponent,
+      LoginPage,
+      PokedexPage,
+      TrainerPage
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule
+      BrowserModule,
+      AppRoutingModules,
+      HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
