@@ -7,6 +7,8 @@ import {AppRoutingModules} from "./services/app-routing.modules";
 import {PokedexPage} from "./pages/pokedex/pokedex.page";
 import {TrainerPage} from "./pages/trainer/trainer.page";
 import {HttpClientModule} from "@angular/common/http";
+import { PokedexListComponent } from './components/pokedex-list/pokedex-list.component';
+import { PokedexItemComponent } from './components/pokedex-item/pokedex-item.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import {HttpClientModule} from "@angular/common/http";
       NavbarComponent,
       LoginPage,
       PokedexPage,
-      TrainerPage
+      TrainerPage,
+      PokedexListComponent,
+      PokedexItemComponent
   ],
   imports: [
       BrowserModule,

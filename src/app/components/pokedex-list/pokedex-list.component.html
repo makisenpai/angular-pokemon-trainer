@@ -1,0 +1,12 @@
+<div class="container">
+    <h2>List of pokemon</h2>
+    <div>
+        <ul class="d-flex flex-wrap justify-content-start">
+            <app-pokedex-item *ngFor="let pokemon of pokemonList" 
+            [pokemon]="pokemon" 
+            (catchById)="handleCatchPokemon($event)">
+            </app-pokedex-item>
+        </ul>
+    </div>
+</div>
+
