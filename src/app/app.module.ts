@@ -6,6 +6,7 @@ import {LoginPage} from "./pages/login/login.page";
 import {AppRoutingModules} from "./services/app-routing.modules";
 import {PokedexPage} from "./pages/pokedex/pokedex.page";
 import {TrainerPage} from "./pages/trainer/trainer.page";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {TrainerPage} from "./pages/trainer/trainer.page";
   ],
   imports: [
       BrowserModule,
-      AppRoutingModules
+      AppRoutingModules,
+      HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
