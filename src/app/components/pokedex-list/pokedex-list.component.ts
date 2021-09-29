@@ -13,12 +13,12 @@ export class PokedexListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // fetch list of pokemon from sessionStorage
+
     let storage = sessionStorage.getItem('testList')
     if (storage !== null) this.pokemonList = JSON.parse(storage);
   }
 
-  
+  //TODO: change handleCatch to add pokemon to trainer's list of pokemons and stuff
   handleCatchPokemon = (pokemonId: number) => {
     let indexOfPokemon = this.pokemonList.findIndex(x => x.id === pokemonId);
     this.pokemonList[indexOfPokemon].caught = true;
