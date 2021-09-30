@@ -9,6 +9,7 @@ import {TrainerPage} from "./pages/trainer/trainer.page";
 import {HttpClientModule} from "@angular/common/http";
 import { PokedexListComponent } from './components/pokedex-list/pokedex-list.component';
 import { PokedexItemComponent } from './components/pokedex-item/pokedex-item.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PokedexItemComponent } from './components/pokedex-item/pokedex-item.com
       PokedexPage,
       TrainerPage,
       PokedexListComponent,
-      PokedexItemComponent
+      PokedexItemComponent,
+      LoginComponent
   ],
   imports: [
       BrowserModule,
