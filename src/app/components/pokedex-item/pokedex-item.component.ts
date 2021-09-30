@@ -15,7 +15,9 @@ export class PokedexItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.sprite = environment.imageUrl + `${this.pokemon.id}.png`;
+      this.sprite = environment.imageUrl + `${this.pokemon.id}.png`;
+      let capitalizedPokemonName = this.pokemon.name[0].toUpperCase() + this.pokemon.name.substr(1)
+      this.pokemon.name = capitalizedPokemonName
   }
 
   onCatchPokemon = () => {
