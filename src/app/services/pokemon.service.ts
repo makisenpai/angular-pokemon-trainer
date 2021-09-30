@@ -21,14 +21,14 @@ export class PokemonService {
     const getIdFromUrl = (url: string):number => {
       return parseInt(url.split("/pokemon/")[1].slice(0, -1))
     }
-
     const cachedPokemon = sessionStorage.getItem("pokemonCache")
     if(cachedPokemon){
       this.pokemons = JSON.parse(cachedPokemon)
       return
     }
 
-    this.http.get<PokemonResponse>(environment.pokeApiUrl)
+    console.log(`${environment.pokeApiUrl}?limit=151`)
+    this.http.get<PokemonResponse>(`${environment.pokeApiUrl}?limit=151`)
       .pipe(
         map((response: PokemonResponse)=> response.results),
         map((pokemons:Pokemon[]) => {
