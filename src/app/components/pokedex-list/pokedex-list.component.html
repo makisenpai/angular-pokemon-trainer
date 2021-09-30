@@ -4,7 +4,7 @@
         <ul class="d-flex flex-wrap justify-content-start">
             <app-pokedex-item *ngFor="let pokemon of pokemonList" 
             [pokemon]="pokemon" 
-            (catchById)="handleCatchPokemon($event)">
+            (catchPokemon)="handleCatchPokemon($event)">
             </app-pokedex-item>
         </ul>
     </div>
