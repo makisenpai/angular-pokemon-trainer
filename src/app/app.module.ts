@@ -7,6 +7,7 @@ import {AppRoutingModules} from "./services/app-routing.modules";
 import {PokedexPage} from "./pages/pokedex/pokedex.page";
 import {TrainerPage} from "./pages/trainer/trainer.page";
 import {HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {HttpClientModule} from "@angular/common/http";
       NavbarComponent,
       LoginPage,
       PokedexPage,
-      TrainerPage
+      TrainerPage,
+      LoginComponent
   ],
   imports: [
       BrowserModule,

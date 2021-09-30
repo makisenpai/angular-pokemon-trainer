@@ -16,6 +16,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.pokemonService.fetchPokemon()
+    //console.log(sessionStorage.getItem("pokemonCache"))
   }
 
   get pokemons(): Pokemon[] {

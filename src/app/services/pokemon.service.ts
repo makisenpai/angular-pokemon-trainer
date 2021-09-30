@@ -2,6 +2,7 @@ import { Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Pokemon, PokemonResponse} from "../models/pokemon.model";
 import {map, switchMap, tap} from "rxjs/operators";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,6 @@ export class PokemonService {
 
   constructor(private readonly http: HttpClient) {
   }
-
-
 
   //fetches first 20 pokemon
   public fetchPokemon() {
@@ -29,7 +28,7 @@ export class PokemonService {
       return
     }
 
-    this.http.get<PokemonResponse>('https://pokeapi.co/api/v2/pokemon/')
+    this.http.get<PokemonResponse>(environment.pokeApiUrl)
       .pipe(
         map((response: PokemonResponse)=> response.results),
         map((pokemons:Pokemon[]) => {
