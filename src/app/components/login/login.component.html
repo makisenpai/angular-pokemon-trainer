@@ -1,4 +1,43 @@
-<h2>User Login!</h2>
-<button (click)="onLoginClick()" [disabled]="attempting">Log in!</button>
-<button (click)="testPatch()" [disabled]="attempting">test</button>
+<div>
+  <h1>Login</h1>
+  <p>Please enter your username to continue</p>
 
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+    <fieldset class="mb-2">
+      <label for="username" class="form-label">Username:</label>
+      <input type="text"
+             ngModel
+             #username="ngModel"
+             name="username"
+             id="username"
+             required
+             minlength="2"
+             maxlength="40"
+             class="form-control">
+    </fieldset>
+
+    <section *ngIf="username.errors && (username.dirty || username.touched)">
+      <div class="alert alert-danger">
+        <p class="d-flex align-items-center mb-0" *ngIf="username.errors.required">
+          <span class="material-icons">warning</span>
+          Please enter a usrname
+        </p>
+        <p class="d-flex align-items-center mb-0" *ngIf="username.errors.minlength">
+          <span class="material-icons">warning</span>
+          Username is too short
+        </p>
+      </div>
+    </section>
+
+    <button
+      type="submit"
+      [disabled]="attempting || loginForm.form.invalid"
+      class="btn btn-primary d-flex align-items-center">
+      Login
+    </button>
+  </form>
+
+
+  <p *ngIf="attempting">Trying to login...</p>
+</div>

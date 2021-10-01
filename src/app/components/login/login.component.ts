@@ -3,6 +3,7 @@ import {PokemonService} from "../../services/pokemon.service";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/user.model";
 import {Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-login-component',
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit{
 
   onLoginClick(): void {
     this.userService.authenticate("emil", async() => {
-      console.log(sessionStorage.getItem("user"))
+      console.log(localStorage.getItem("user"))
     })
   }
 
@@ -45,9 +46,17 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     //TODO change to local storage
-    //if (sessionStorage.getItem("user") !== undefined){
+    if (localStorage.getItem("user") !== undefined){
       //this.router.navigate(['pokedex'])
-    //}
+    }
+  }
+
+  onSubmit(loginForm: NgForm): void {
+
+    const { username } = loginForm.value
+    this.userService.authenticate(username, async () => {
+      await this.router.navigate(['pokedex'])
+    })
   }
 
 }
