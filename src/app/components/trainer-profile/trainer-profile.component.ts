@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from "../../models/user.model";
 
 @Component({
     selector: 'app-trainer-profile',
@@ -7,82 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainerProfileComponent implements OnInit {
 
-
-
-    user: any = { //TODO: CHANGE TO USE USER.MODEL LATER
+    user: User = {
         username: "",
         id: 0,
-        pokemonParty: []
+        pokemon: []
     }
 
     constructor() {
     }
 
     ngOnInit(): void {
-        //let user = sessionStorage.getItem('currentUser') //TODO: Change to use LOCALSTORAGE for user
-        this.user = {
-            username: "ash",
-            id: 1,
-            pokemonParty: [
-                {
-                    "id": 1,
-                    "name": "bulbasaur",
-                    "url": "https://pokeapi.co/api/v2/pokemon/1/"
-                },
-                {
-                    "id": 2,
-                    "name": "ivysaur",
-                    "url": "https://pokeapi.co/api/v2/pokemon/2/"
-                },
-                {
-                    "name": "venusaur",
-                    "url": "https://pokeapi.co/api/v2/pokemon/3/",
-                    "id": 3
-                },
-                {
-                    "name": "butterfree",
-                    "url": "https://pokeapi.co/api/v2/pokemon/12/",
-                    "id": 12
-                },
-                {
-                    "name": "metapod",
-                    "url": "https://pokeapi.co/api/v2/pokemon/11/",
-                    "id": 11
-                },
-                {
-                    "name": "nidoran-f",
-                    "url": "https://pokeapi.co/api/v2/pokemon/29/",
-                    "id": 29
-                },
-                {
-                    "name": "dugtrio",
-                    "url": "https://pokeapi.co/api/v2/pokemon/51/",
-                    "id": 51
-                },
-                {
-                    "name": "arbok",
-                    "url": "https://pokeapi.co/api/v2/pokemon/24/",
-                    "id": 24
-                },
-                {
-                    "name": "poliwhirl",
-                    "url": "https://pokeapi.co/api/v2/pokemon/61/",
-                    "id": 61
-                },
-                {
-                    "name": "poliwrath",
-                    "url": "https://pokeapi.co/api/v2/pokemon/62/",
-                    "id": 62
-                },
-                {
-                    "name": "abra",
-                    "url": "https://pokeapi.co/api/v2/pokemon/63/",
-                    "id": 63
-                }
-            ]
-        }
-        //if(user !== null) this.user = JSON.parse(user);
-
+        let currentUser = localStorage.getItem('user')
+        if (currentUser !== null) this.user = JSON.parse(currentUser);
     }
 
 }

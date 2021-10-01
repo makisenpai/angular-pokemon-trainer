@@ -4,5 +4,4 @@ import { Component} from "@angular/core";
     selector: 'app-trainer',
     templateUrl: './trainer.page.html'
 })
-
 export class TrainerPage{ }

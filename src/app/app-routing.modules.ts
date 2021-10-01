@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import  {RouterModule, Routes } from "@angular/router";
-import { LoginPage } from "./pages/login/login.page";
-import { PokedexPage } from "./pages/pokedex/pokedex.page";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from "@angular/router";
+import {LoginPage} from "./pages/login/login.page";
+import {PokedexPage} from "./pages/pokedex/pokedex.page";
 import {TrainerPage} from "./pages/trainer/trainer.page";
 import {AuthGuard} from "./services/auth.guard";
 
@@ -17,21 +17,22 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginPage
-    },{
+    }, {
         path: 'pokedex',
         component: PokedexPage,
-        canActivate: [ AuthGuard ]
-    },{
+        canActivate: [AuthGuard]
+    }, {
         path: 'trainer',
         component: TrainerPage,
-        canActivate: [ AuthGuard ]
+        canActivate: [AuthGuard]
     }
 
 
 ]
 
 @NgModule({
-    imports: [ RouterModule.forRoot(routes) ],
-    exports: [ RouterModule ]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
-export class AppRoutingModules {}
+export class AppRoutingModules {
+}
