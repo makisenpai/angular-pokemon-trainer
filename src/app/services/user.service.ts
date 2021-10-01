@@ -40,6 +40,31 @@ export class UserService {
     return null
   }
 
+  //Removes currentPokemon from the trainers pokemons[]
+  public removePokemonFromTrainer(currentPokemon: Pokemon){
+      let userString = sessionStorage.getItem("user")
+      if(userString){
+          this.user = JSON.parse(userString)
+          let pokemons: Pokemon[] = this.user.pokemon
+
+          const index = pokemons.indexOf(currentPokemon)
+          pokemons.splice(index, 1)
+
+          const headers = new HttpHeaders({
+              'x-api-key': environment.apiKey
+          })
+          return this.http.patch<User>(`${API_URL}${this.user.id}`,
+              {"pokemon": pokemons},
+              {headers})
+              .subscribe(response => {
+                  return response
+              })
+
+      }
+      return null
+  }
+
+
   private findByUsername(username: string): Observable<User[]> {
     return this.http.get<User[]>(`${API_URL}?username=${username}`)
   }

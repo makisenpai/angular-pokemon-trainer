@@ -13,7 +13,7 @@ export class TrainerPartyComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        //ANGULAR STATE, GET THE USERS POKEMON
+        //TODO: State fix so it uses LOCALSTORAGE to display the users pokemon.
         let storage = sessionStorage.getItem('pokemonCache')
         if (storage !== null) this.partyList = JSON.parse(storage);
     }

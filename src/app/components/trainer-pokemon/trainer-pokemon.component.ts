@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Pokemon} from "../../models/pokemon.model";
 import {environment} from "../../../environments/environment";
+import {UserService} from "../../services/user.service";
+import {User} from "../../models/user.model";
 
 @Component({
     selector: 'app-trainer-pokemon',
@@ -9,9 +11,10 @@ import {environment} from "../../../environments/environment";
 })
 export class TrainerPokemonComponent implements OnInit {
     @Input() pokemon: Pokemon = {id: 0, name: "", url: ""}// CHANGE TO POKEMON TYPE
-
     public sprite = "";
-    constructor() {
+
+    user:User = {id: 0, pokemon: [], username: ""}
+    constructor(private readonly  userService: UserService) {
     }
 
     ngOnInit(): void {
@@ -21,6 +24,12 @@ export class TrainerPokemonComponent implements OnInit {
     }
 
     onReleasePokemon = () => {
-        //
+        console.log("onReleasePokemonTest")
+        let userString =sessionStorage.getItem("user")
+
+        if(userString){
+            this.user = JSON.parse(userString)
+        }
+        this.userService.removePokemonFromTrainer(this.user.id, this.pokemon)
     }
 }
