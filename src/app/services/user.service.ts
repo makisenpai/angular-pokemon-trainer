@@ -15,27 +15,25 @@ export class UserService {
 
   public attempting: boolean = false;
   public error: string = '';
-  user:User = {id: 0, pokemon: [], username: ""}
+  user: User = {id: 0, pokemon: [], username: ""}
 
   constructor(private readonly http: HttpClient) {
   }
 
-  public addPokemonToTrainer(user_id: number, newPokemon: Pokemon){
-    let userString = sessionStorage.getItem("user")
+  public addPokemonToTrainer() {
+    let userString = localStorage.getItem("user")
     if(userString){
       this.user = JSON.parse(userString)
-      let pokemons:Pokemon[] = this.user.pokemon
-      pokemons.push(newPokemon)
 
       const headers = new HttpHeaders({
         'x-api-key': environment.apiKey
       })
-      return this.http.patch<User>(`${API_URL}${user_id}`,
-        {"pokemon": pokemons},
-        {headers})
-        .subscribe(response => {
-          return response
-        })
+    return this.http.patch<User>(`${API_URL}${this.user.id}`,
+      {"pokemon": this.user.pokemon},
+      {headers})
+      .subscribe(response => {
+        return response
+      })
     }
     return null
   }
@@ -70,11 +68,16 @@ export class UserService {
   }
 
   private createUser(username: string): Observable<User> {
+
      const headers = new HttpHeaders({
        'x-api-key': environment.apiKey
      })
+     const pokemon: Pokemon[] = []
     return this.http.post<User>(API_URL,
-      { username },
+      {
+        "username": username,
+        "pokemon": []
+      },
       {headers})
   }
   public authenticate(username: string, onSuccess: () => void): void {
@@ -104,7 +107,7 @@ export class UserService {
       .subscribe(
         (user: User) => { // Success
           if (user.id) {
-            sessionStorage.setItem("user", JSON.stringify(user))
+            localStorage.setItem("user", JSON.stringify(user))
 
             onSuccess();
           }

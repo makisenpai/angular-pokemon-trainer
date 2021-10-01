@@ -13,6 +13,7 @@ import { PokedexListComponent } from './components/pokedex-list/pokedex-list.com
 import { PokedexItemComponent } from './components/pokedex-item/pokedex-item.component';
 import {TrainerPartyComponent} from "./components/trainer-party/trainer-party.component";
 import { LoginComponent } from './components/login/login.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -31,9 +32,10 @@ import { LoginComponent } from './components/login/login.component';
       TrainerPartyComponent
   ],
   imports: [
-      BrowserModule,
-      AppRoutingModules,
-      HttpClientModule
+    BrowserModule,
+    AppRoutingModules,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
