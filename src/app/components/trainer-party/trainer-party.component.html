@@ -1,6 +1,9 @@
 <h2>Party: </h2>
 <div>
-    <ul class="d-flex flex-wrap justify-content-start">
+    <p *ngIf="user.pokemon.length === 0">
+        YoU HaVe nO pOkEmAnS!!! - Prof Oak
+    </p>
+    <ul class="d-flex flex-wrap justify-content-start" *ngIf="user.pokemon.length !== 0">
         <app-trainer-pokemon *ngFor="let pokemon of user.pokemon"
                              [pokemon]="pokemon"
                              (releasePokemon)="handleReleasePokemon($event)">
