@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit{
 
 
   onLoginClick(): void {
-    this.userService.authenticate("maki", async() => {
+    this.userService.authenticate("ash", async() => {
       console.log(localStorage.getItem("user"))
     })
   }

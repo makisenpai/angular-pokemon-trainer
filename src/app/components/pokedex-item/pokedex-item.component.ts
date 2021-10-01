@@ -25,8 +25,12 @@ export class PokedexItemComponent implements OnInit {
     this.sprite = environment.imageUrl + `${this.pokemon.id}.png`;
     let currentUser = localStorage.getItem('user')
     if (currentUser !== null) this.user = JSON.parse(currentUser);
-    let indexOfPokemon = this.user.pokemon.find(x => x.id === this.pokemon.id);
-    if (indexOfPokemon) this.caught = true;
+
+    if (this.user.pokemon) {
+      let indexOfPokemon = this.user.pokemon.find(x => x.id === this.pokemon.id);
+      if (indexOfPokemon) this.caught = true;
+    }
+
   }
 
   onCatchPokemon = () => {

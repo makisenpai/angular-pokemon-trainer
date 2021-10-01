@@ -15,7 +15,7 @@ export class UserService {
 
   public attempting: boolean = false;
   public error: string = '';
-  user:User = {id: 0, pokemon: [], username: ""}
+  user: User = {id: 0, pokemon: [], username: ""}
 
   constructor(private readonly http: HttpClient) {
   }
@@ -45,11 +45,16 @@ export class UserService {
   }
 
   private createUser(username: string): Observable<User> {
+
      const headers = new HttpHeaders({
        'x-api-key': environment.apiKey
      })
+     const pokemon: Pokemon[] = []
     return this.http.post<User>(API_URL,
-      { username },
+    { 
+      "username": username,
+      "pokemon": []
+    },
       {headers})
   }
   public authenticate(username: string, onSuccess: () => void): void {
