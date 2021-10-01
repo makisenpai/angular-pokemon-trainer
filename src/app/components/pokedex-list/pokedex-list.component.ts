@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
-import {Pokemon} from "../../models/pokemon.model";
+import { Pokemon } from "../../models/pokemon.model";
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pokedex-list',
@@ -14,7 +15,7 @@ export class PokedexListComponent implements OnInit {
     pokemon: []
   };
   pokemonList: Pokemon[] = [];
-  constructor() { 
+  constructor(private readonly userService: UserService) { 
 
   }
 
@@ -28,6 +29,6 @@ export class PokedexListComponent implements OnInit {
   handleCatchPokemon = (pokemon: Pokemon) => {
     this.user.pokemon.push(pokemon)
     sessionStorage.setItem('user', JSON.stringify(this.user));
-    //TODO: ALSO POST NEW TRAINER OBJECT TO API
+    this.userService.addPokemonToTrainer(this.user.id, pokemon);
   }
 }
