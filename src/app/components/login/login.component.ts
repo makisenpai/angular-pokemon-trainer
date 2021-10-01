@@ -19,13 +19,7 @@ export class LoginComponent implements OnInit{
   ) {
 
   }
-
-
-  onLoginClick(): void {
-    this.userService.authenticate("emil", async() => {
-      console.log(localStorage.getItem("user"))
-    })
-  }
+  
 
   //TODO REMOVE LATER
   testPatch(): void {
