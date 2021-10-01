@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {PokemonService} from "../../services/pokemon.service";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/user.model";
 import {Router} from "@angular/router";
@@ -10,37 +9,35 @@ import {NgForm} from "@angular/forms";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+//LoginComponent, for login input form, used on LoginPage.
 export class LoginComponent implements OnInit{
 
-  user:User = {id: 0, pokemon: [], username: ""}
-  constructor(
-    private readonly userService: UserService,
-    private readonly router: Router,
-  ) {
-
-  }
-  
-
-
-  get attempting(): boolean {
-    return this.userService.attempting;
-  }
-
-
-
-  ngOnInit(): void {
-    //TODO change to local storage
-    if (localStorage.getItem("user") !== undefined){
-      //this.router.navigate(['pokedex'])
+    user: User = {id: 0, pokemon: [], username: ""}
+    constructor(
+        private readonly userService: UserService,
+        private readonly router: Router,
+        ){
     }
-  }
 
-  onSubmit(loginForm: NgForm): void {
+    get attempting(): boolean {
+        return this.userService.attempting;
+    }
 
-    const { username } = loginForm.value
-    this.userService.authenticate(username, async () => {
-      await this.router.navigate(['pokedex'])
-    })
-  }
+
+
+    ngOnInit(): void {
+        //If user is already set redirect to pokedex, SPECIALCASE that auth guard wont catch.
+        if (localStorage.getItem("user") !== undefined){
+            this.router.navigate(['pokedex'])
+        }
+    }
+
+    //Submit loginform
+    onSubmit(loginForm: NgForm): void {
+        const { username } = loginForm.value
+        this.userService.authenticate(username, async () => {
+            await this.router.navigate(['pokedex'])
+        })
+    }
 
 }

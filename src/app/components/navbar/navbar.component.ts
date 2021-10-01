@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+    constructor() { }
 
-  isLoggedIn(){
-    if(localStorage.getItem("user")){
-      return true
+    isLoggedIn(){
+        return localStorage.getItem("user");
+
     }
-    return false
-  }
 
-  onLogoutClicked(){
-    localStorage.removeItem("user")
-  }
+    onLogoutClicked(){
+        localStorage.removeItem("user")
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+
+    }
 
 }
+
