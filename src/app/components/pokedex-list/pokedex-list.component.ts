@@ -29,6 +29,6 @@ export class PokedexListComponent implements OnInit {
   handleCatchPokemon = (pokemon: Pokemon) => {
     this.user.pokemon.push(pokemon)
     localStorage.setItem('user', JSON.stringify(this.user));
-    this.userService.addPokemonToTrainer(this.user.id, pokemon);
+    this.userService.addPokemonToTrainer();
   }
 }
