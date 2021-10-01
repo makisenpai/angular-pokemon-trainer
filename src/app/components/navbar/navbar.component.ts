@@ -9,6 +9,13 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
+  isLoggedIn(){
+    if(localStorage.getItem("user")){
+      return true
+    }
+    return false
+  }
+
   onLogoutClicked(){
     localStorage.removeItem("user")
   }
