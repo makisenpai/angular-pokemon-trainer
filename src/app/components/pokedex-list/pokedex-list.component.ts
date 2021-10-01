@@ -22,13 +22,13 @@ export class PokedexListComponent implements OnInit {
   ngOnInit(): void {
     let pokedex = sessionStorage.getItem('pokemonCache');
     if (pokedex !== null) this.pokemonList = JSON.parse(pokedex);
-    let currentUser = sessionStorage.getItem('user')
+    let currentUser = localStorage.getItem('user')
     if (currentUser !== null) this.user = JSON.parse(currentUser);
   }
 
   handleCatchPokemon = (pokemon: Pokemon) => {
     this.user.pokemon.push(pokemon)
-    sessionStorage.setItem('user', JSON.stringify(this.user));
+    localStorage.setItem('user', JSON.stringify(this.user));
     this.userService.addPokemonToTrainer(this.user.id, pokemon);
   }
 }

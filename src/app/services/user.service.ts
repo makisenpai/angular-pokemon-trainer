@@ -21,7 +21,7 @@ export class UserService {
   }
 
   public addPokemonToTrainer(user_id: number, newPokemon: Pokemon){
-    let userString = sessionStorage.getItem("user")
+    let userString = localStorage.getItem("user")
     if(userString){
       this.user = JSON.parse(userString)
       let pokemons:Pokemon[] = this.user.pokemon
@@ -79,7 +79,7 @@ export class UserService {
       .subscribe(
         (user: User) => { // Success
           if (user.id) {
-            sessionStorage.setItem("user", JSON.stringify(user))
+            localStorage.setItem("user", JSON.stringify(user))
 
             onSuccess();
           }
