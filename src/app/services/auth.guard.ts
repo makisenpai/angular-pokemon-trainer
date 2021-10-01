@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
     if (localStorage.getItem("user") !== null) {
       return true;
     }
-    console.log("b")
+
     // If not, redirect and return false :(
     this.router.navigate(['login'])
     return false;

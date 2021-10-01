@@ -2,10 +2,10 @@
     <a class="navbar-brand text-white">
         <img src="assets/pokeball-transparent-png-2.png" width="30" height="30" class="d-inline-block align-top" alt=""> Pokè Trainer</a>
     <div class="collapse navbar-collapse" >
-        <ul class="navbar-nav me-auto mb-0 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" (click)="onLogoutClicked()" routerLink="login">Logout</a></li>
+        <ul *ngIf="isLoggedIn()" class="navbar-nav me-auto mb-0 mb-lg-0">
             <li class="nav-item"><a class="nav-link" routerLink="pokedex">Pokèdex</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="trainer">Trainer profile</a></li>
+            <li class="nav-item"><a class="nav-link" (click)="onLogoutClicked()" routerLink="login">Logout</a></li>
         </ul>
     </div>
 </nav>
