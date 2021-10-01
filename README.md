@@ -1,27 +1,22 @@
-# NgPokemon
+# Pokemon Trainer Project.
+This project was made by, Martin Stenberg, Tien Nguyen & Emil Onsøyen.
+In this project we used the framwork Angular to create a single page application and Bootstrap for styling. 
+LINK TO HEROKU: 
+https://intense-depths-19616.herokuapp.com/
+
+LINK TO COMPONENT TREE: 
+https://github.com/makisenpai/angular-pokemon-trainer/blob/master/Pokemon-Trainer-Angular.pdf
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
 
-## Development server
+This app uses the PokeAPI, to let a user create an account catch pokemon, and view their own party. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## How to use the app
 
-## Code scaffolding
+Create or login to a user on the Login page.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To catch pokemon, go to the pokedex page and click on the pokemon button. 
 
-## Build
+To view your pokemon, go to the profile page.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To delete pokemon, go to the profile page, and click delete pokemon.
