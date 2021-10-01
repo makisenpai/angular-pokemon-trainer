@@ -17,21 +17,11 @@ export class LoginComponent implements OnInit{
 
 
   onLoginClick(): void {
-    this.userService.authenticate("maki", async() => {
-      console.log(sessionStorage.getItem("user"))
+    this.userService.authenticate("ash", async() => {
+      console.log(localStorage.getItem("user"))
     })
   }
 
-  //TODO REMOVE LATER
-  testPatch(): void {
-    console.log("test!")
-    let userString = sessionStorage.getItem("user")
-    let venusaur = {id: 3, name: "Venusaur", url: ""}
-    if(userString){
-      this.user = JSON.parse(userString)
-    }
-    this.userService.addPokemonToTrainer(this.user.id, venusaur)
-  }
 
   get attempting(): boolean {
     return this.userService.attempting;
