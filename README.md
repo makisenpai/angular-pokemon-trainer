@@ -7,6 +7,9 @@ https://intense-depths-19616.herokuapp.com/
 LINK TO COMPONENT TREE: 
 https://github.com/makisenpai/angular-pokemon-trainer/blob/master/Pokemon-Trainer-Angular.pdf
 
+LINK TO POKEAPI DOCUMENTAION:
+https://pokeapi.co/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
 
 This app uses the PokeAPI, to let a user create an account catch pokemon, and view their own party. 
