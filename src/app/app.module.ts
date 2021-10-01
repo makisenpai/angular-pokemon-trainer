@@ -12,6 +12,7 @@ import {TrainerPokemonComponent} from "./components/trainer-pokemon/trainer-poke
 import { PokedexListComponent } from './components/pokedex-list/pokedex-list.component';
 import { PokedexItemComponent } from './components/pokedex-item/pokedex-item.component';
 import {TrainerPartyComponent} from "./components/trainer-party/trainer-party.component";
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import {TrainerPartyComponent} from "./components/trainer-party/trainer-party.co
       PokedexPage,
       TrainerPage,
       PokedexListComponent,
+      PokedexItemComponent,
+      LoginComponent,
       PokedexItemComponent,
       TrainerPage,
       TrainerProfileComponent,
