@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <h1>Login</h1>
   <p>Please enter your username to continue</p>
 
@@ -17,14 +17,12 @@
              class="form-control">
     </fieldset>
 
-    <section *ngIf="username.errors && (username.dirty || username.touched)">
+    <section *ngIf="username.errors && (username.dirty)">
       <div class="alert alert-danger">
         <p class="d-flex align-items-center mb-0" *ngIf="username.errors.required">
-          <span class="material-icons">warning</span>
-          Please enter a usrname
+          Please enter a username
         </p>
         <p class="d-flex align-items-center mb-0" *ngIf="username.errors.minlength">
-          <span class="material-icons">warning</span>
           Username is too short
         </p>
       </div>
