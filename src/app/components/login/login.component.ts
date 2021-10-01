@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PokemonService} from "../../services/pokemon.service";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/user.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-component',
@@ -11,13 +12,16 @@ import {User} from "../../models/user.model";
 export class LoginComponent implements OnInit{
 
   user:User = {id: 0, pokemon: [], username: ""}
-  constructor(private readonly userService: UserService) {
+  constructor(
+    private readonly userService: UserService,
+    private readonly router: Router,
+  ) {
 
   }
 
 
   onLoginClick(): void {
-    this.userService.authenticate("maki", async() => {
+    this.userService.authenticate("emil", async() => {
       console.log(sessionStorage.getItem("user"))
     })
   }
@@ -40,6 +44,10 @@ export class LoginComponent implements OnInit{
 
 
   ngOnInit(): void {
+    //TODO change to local storage
+    //if (sessionStorage.getItem("user") !== undefined){
+      //this.router.navigate(['pokedex'])
+    //}
   }
 
 }

@@ -49,7 +49,10 @@ export class UserService {
        'x-api-key': environment.apiKey
      })
     return this.http.post<User>(API_URL,
-      { username },
+      {
+        "username": username,
+        "pokemon": []
+      },
       {headers})
   }
   public authenticate(username: string, onSuccess: () => void): void {
