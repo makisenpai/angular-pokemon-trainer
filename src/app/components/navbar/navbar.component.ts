@@ -9,6 +9,10 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
+  onLogoutClicked(){
+    localStorage.removeItem("user")
+  }
+
   ngOnInit(): void {
   }
 

@@ -16,6 +16,9 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.pokemonService.fetchPokemon()
+    localStorage.clear()
+    console.log(localStorage.getItem("user"))
+    console.log(localStorage.getItem("user") == undefined)
     //console.log(sessionStorage.getItem("pokemonCache"))
   }
 

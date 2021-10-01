@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import  {RouterModule, Routes } from "@angular/router";
-import { LoginPage } from "../pages/login/login.page";
-import { PokedexPage } from "../pages/pokedex/pokedex.page";
-import {TrainerPage} from "../pages/trainer/trainer.page";
+import { LoginPage } from "./pages/login/login.page";
+import { PokedexPage } from "./pages/pokedex/pokedex.page";
+import {TrainerPage} from "./pages/trainer/trainer.page";
+import {AuthGuard} from "./services/auth.guard";
 
 
 //LoginPage, TrainerProfile, PokeDex
@@ -18,10 +19,12 @@ const routes: Routes = [
         component: LoginPage
     },{
         path: 'pokedex',
-        component: PokedexPage
+        component: PokedexPage,
+        canActivate: [ AuthGuard ]
     },{
         path: 'trainer',
-        component: TrainerPage
+        component: TrainerPage,
+        canActivate: [ AuthGuard ]
     }
 
 
