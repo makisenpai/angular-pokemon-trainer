@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
-import {Pokemon} from "../../models/pokemon.model";
+import { Pokemon } from "../../models/pokemon.model";
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pokedex-list',
@@ -14,20 +15,20 @@ export class PokedexListComponent implements OnInit {
     pokemon: []
   };
   pokemonList: Pokemon[] = [];
-  constructor() { 
+  constructor(private readonly userService: UserService) { 
 
   }
 
   ngOnInit(): void {
     let pokedex = sessionStorage.getItem('pokemonCache');
     if (pokedex !== null) this.pokemonList = JSON.parse(pokedex);
-    let currentUser = sessionStorage.getItem('user')
+    let currentUser = localStorage.getItem('user')
     if (currentUser !== null) this.user = JSON.parse(currentUser);
   }
 
   handleCatchPokemon = (pokemon: Pokemon) => {
     this.user.pokemon.push(pokemon)
-    sessionStorage.setItem('user', JSON.stringify(this.user));
-    //TODO: ALSO POST NEW TRAINER OBJECT TO API
+    localStorage.setItem('user', JSON.stringify(this.user));
+    this.userService.addPokemonToTrainer(this.user.id, pokemon);
   }
 }

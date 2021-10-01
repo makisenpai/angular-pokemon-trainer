@@ -11,8 +11,8 @@ import { User } from 'src/app/models/user.model';
 export class PokedexItemComponent implements OnInit {
   @Input() pokemon: Pokemon = {id: 0, name: "", url: ""}// CHANGE TO POKEMON TYPE
   @Output() catchPokemon: EventEmitter<Pokemon> = new EventEmitter(); // send id to parent when clicked or something
-  public sprite = "";
-  public caught = false;
+  public sprite: string = "";
+  public caught: boolean = false;
   user: User = {
     id: 0,
     username: '',
@@ -23,10 +23,14 @@ export class PokedexItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.sprite = environment.imageUrl + `${this.pokemon.id}.png`;
-    let currentUser = sessionStorage.getItem('user')
+    let currentUser = localStorage.getItem('user')
     if (currentUser !== null) this.user = JSON.parse(currentUser);
-    let indexOfPokemon = this.user.pokemon.find(x => x.id === this.pokemon.id);
-    if (indexOfPokemon) this.caught = true;
+
+    if (this.user.pokemon) {
+      let indexOfPokemon = this.user.pokemon.find(x => x.id === this.pokemon.id);
+      if (indexOfPokemon) this.caught = true;
+    }
+
   }
 
   onCatchPokemon = () => {

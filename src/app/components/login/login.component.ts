@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit{
   //TODO REMOVE LATER
   testPatch(): void {
     console.log("test!")
-    let userString = sessionStorage.getItem("user")
+    let userString = localStorage.getItem("user")
     let venusaur = {id: 3, name: "Venusaur", url: ""}
     if(userString){
       this.user = JSON.parse(userString)
