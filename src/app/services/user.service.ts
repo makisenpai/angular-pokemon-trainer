@@ -39,27 +39,23 @@ export class UserService {
   }
 
   //Removes currentPokemon from the trainers pokemons[]
-  public removePokemonFromTrainer(currentPokemon: Pokemon){
-      let userString = sessionStorage.getItem("user")
+  public removePokemonFromTrainer(){
+      let userString = localStorage.getItem("user")
       if(userString){
           this.user = JSON.parse(userString)
-          let pokemons: Pokemon[] = this.user.pokemon
-
-          const index = pokemons.indexOf(currentPokemon)
-          pokemons.splice(index, 1)
 
           const headers = new HttpHeaders({
               'x-api-key': environment.apiKey
           })
           return this.http.patch<User>(`${API_URL}${this.user.id}`,
-              {"pokemon": pokemons},
+              {"pokemon": this.user.pokemon},
               {headers})
               .subscribe(response => {
                   return response
               })
-
       }
       return null
+
   }
 
 

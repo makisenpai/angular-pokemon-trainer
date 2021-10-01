@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Pokemon} from "../../models/pokemon.model";
 import {environment} from "../../../environments/environment";
 import {UserService} from "../../services/user.service";
@@ -11,6 +11,7 @@ import {User} from "../../models/user.model";
 })
 export class TrainerPokemonComponent implements OnInit {
     @Input() pokemon: Pokemon = {id: 0, name: "", url: ""}// CHANGE TO POKEMON TYPE
+    @Output() releasePokemon: EventEmitter<Pokemon> = new EventEmitter();
     public sprite = "";
 
     user:User = {id: 0, pokemon: [], username: ""}
@@ -18,18 +19,15 @@ export class TrainerPokemonComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        let capitalizedPokemonName = this.pokemon.name[0].toUpperCase() + this.pokemon.name.substr(1)
-        this.pokemon.name = capitalizedPokemonName
+        //TODO: Put this in just the RENDER somehow
+        //let capitalizedPokemonName = this.pokemon.name[0].toUpperCase() + this.pokemon.name.substr(1)
+        //this.pokemon.name = capitalizedPokemonName
         this.sprite = environment.imageUrl + `${this.pokemon.id}.png`;
     }
 
     onReleasePokemon = () => {
         console.log("onReleasePokemonTest")
-        let userString =sessionStorage.getItem("user")
+        if (this.pokemon) this.releasePokemon.emit(this.pokemon)
 
-        if(userString){
-            this.user = JSON.parse(userString)
-        }
-        this.userService.removePokemonFromTrainer(this.user.id, this.pokemon)
     }
 }

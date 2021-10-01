@@ -1,8 +1,9 @@
-<h2>List of pokemon</h2>
+<h2>Party: </h2>
 <div>
     <ul class="d-flex flex-wrap justify-content-start">
-        <app-trainer-pokemon *ngFor="let pokemon of partyList"
-                          [pokemon]="pokemon">
+        <app-trainer-pokemon *ngFor="let pokemon of user.pokemon"
+                             [pokemon]="pokemon"
+                             (releasePokemon)="handleReleasePokemon($event)">
         </app-trainer-pokemon>
     </ul>
 </div>
