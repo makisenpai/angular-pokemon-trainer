@@ -2,8 +2,8 @@
 This project was made by, Martin Stenberg, Tien Nguyen & Emil Onsøyen.
 In this project we used the framwork Angular to create a single page application and Bootstrap for styling. 
 
-LINK TO HEROKU: 
-https://intense-depths-19616.herokuapp.com/
+LINK TO DEPLOYED APPLICATION: 
+https://tien-pokemon-app.herokuapp.com/
 
 LINK TO COMPONENT TREE: 
 https://github.com/makisenpai/angular-pokemon-trainer/blob/master/Pokemon-Trainer-Angular.pdf
