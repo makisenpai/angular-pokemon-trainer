@@ -21,16 +21,6 @@ export class LoginComponent implements OnInit{
   }
   
 
-  //TODO REMOVE LATER
-  testPatch(): void {
-    console.log("test!")
-    let userString = localStorage.getItem("user")
-    let venusaur = {id: 3, name: "Venusaur", url: ""}
-    if(userString){
-      this.user = JSON.parse(userString)
-    }
-    this.userService.addPokemonToTrainer(this.user.id, venusaur)
-  }
 
   get attempting(): boolean {
     return this.userService.attempting;

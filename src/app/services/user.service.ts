@@ -20,22 +20,20 @@ export class UserService {
   constructor(private readonly http: HttpClient) {
   }
 
-  public addPokemonToTrainer(user_id: number, newPokemon: Pokemon){
+  public addPokemonToTrainer() {
     let userString = localStorage.getItem("user")
     if(userString){
       this.user = JSON.parse(userString)
-      let pokemons:Pokemon[] = this.user.pokemon
-      pokemons.push(newPokemon)
 
       const headers = new HttpHeaders({
         'x-api-key': environment.apiKey
       })
-      return this.http.patch<User>(`${API_URL}${user_id}`,
-        {"pokemon": pokemons},
-        {headers})
-        .subscribe(response => {
-          return response
-        })
+    return this.http.patch<User>(`${API_URL}${this.user.id}`,
+      {"pokemon": this.user.pokemon},
+      {headers})
+      .subscribe(response => {
+        return response
+      })
     }
     return null
   }
